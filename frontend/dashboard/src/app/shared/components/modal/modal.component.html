@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="modal-container">
+    <div class="modal-fields-container">
+
+      <div class="modal-input-container">
+        <label class="modal-field-label">Name:</label>
+        <input
+          class="modal-input"
+          placeholder="Name"
+          type="text"
+          [(ngModel)]="user.name"
+          [value]="user.name"
+          [disabled]="isViewOnly"
+        />
+      </div>
+
+      <div class="modal-input-container">
+        <label class="modal-field-label">Email:</label>
+        <input
+          class="modal-input"
+          placeholder="Email"
+          type="text"
+          [(ngModel)]="user.email"
+          [value]="user.email"
+          [disabled]="isViewOnly"
+        />
+      </div>
+
+      <div class="modal-input-container">
+        <label class="modal-field-label">Subscribers:</label>
+        <input
+          class="modal-input"
+          placeholder="Subscribers"
+          type="number"
+          [(ngModel)]="user.subscribers"
+          [value]="user.subscribers"
+          [disabled]="isViewOnly"
+        />
+      </div>
+
+      <div class="modal-select-container">
+        <label class="modal-field-label">Category:</label>
+        <select
+          class="modal-select"
+          [(ngModel)]="user.category"
+          [disabled]="isViewOnly"
+        >
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <div class="modal-select-container">
+        <label class="modal-field-label">Platform:</label>
+        <select
+          class="modal-select"
+          [(ngModel)]="user.platform"
+          [disabled]="isViewOnly"
+        >
+          <option *ngFor="let platform of platforms" [value]="platform">
+            {{ platform }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-container-btn">
+      <button (click)="handleCloseModal()" class="modal-btn btn-close">
+        Close
+      </button>
+      <button
+        (click)="handleSaveChangesOnModal()"
+        class="modal-btn btn-save"
+        [disabled]="isViewOnly"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

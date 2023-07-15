@@ -1,0 +1,40 @@
+.header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 12.5%;
+  width: 100%;
+  background-color: var(--primary-background-color);
+
+  .header-title {
+    position: relative;
+    height: auto;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--font-color);
+  }
+
+  app-btn-theme {
+    position: absolute;
+    height: auto;
+    width: auto;
+    right: 10%;
+  }
+
+  .header-btn-exit {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    color: var(--font-color);
+    right: 4%;
+
+    &:hover {
+      opacity: 0.9;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<div class="search-options-container">
+ <div class="search-options-create-user-container">
+   <button class="search-btn-create"
+   (click)="handleOpenModal()">
+    Create new user <mat-icon>group_add</mat-icon>
+  </button>
+ </div>
+
+  <div class="search-options-select-container">
+     <select class="search-options-select" placeholder="Select first attribute" (change)="handleChangeFirstAttribute($event)">
+ <option value="" disabled>Select first attribute</option>
+    <option value="name" selected>Name</option>
+    <option value="email">Email</option>
+    <option value="subscribers">Subscribers</option>
+    <option value="category">Category</option>
+    <option value="platform">Platform</option>
+  </select>
+
+   <select class="search-options-select" placeholder="Select second attribute" (change)="handleChangeSecondAttribute($event)">
+      <option value="" disabled>Select second attribute</option>
+    <option value="name">Name</option>
+      <option value="email"  selected>Email</option>
+      <option value="subscribers">Subscribers</option>
+      <option value="category">Category</option>
+      <option value="platform">Platform</option>
+    </select>
+
+
+    <button class="search-btn" (click)="searchUserByAttributesSelected()">Search <mat-icon>search</mat-icon></button>
+  </div>
+</div>

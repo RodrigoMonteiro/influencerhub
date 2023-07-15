@@ -1,0 +1,55 @@
+<input
+  class="table-input-search"
+  type="text"
+  placeholder="Search user by attribute selected"
+  [(ngModel)]="searchField"
+/>
+<button (click)="searchAttributeByText()" class="table-input-search-btn">
+  <mat-icon>search</mat-icon>
+</button>
+<table class="table-container">
+  <thead class="table-header-container">
+    <tr class="table-header-row-container">
+      <th class="table-header-atribute">
+        {{ firstAttribute | capitalizeFirstLetter }}
+      </th>
+      <th class="table-header-atribute">
+        {{ secondAttribute | capitalizeFirstLetter }}
+      </th>
+      <th class="table-header-actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-body">
+    <tr class="table-body-row-container" *ngFor="let user of usersTest">
+      <td class="table-body-atribute">
+        {{ user[firstAttribute.toLowerCase()] }}
+      </td>
+      <td class="table-body-atribute">
+        {{ user[secondAttribute.toLowerCase()]}}
+      </td>
+      <td class="table-body-actions">
+        <button
+          class="table-btn-actions"
+          (click)="handleOpenModalTableReadOnly(user)"
+        >
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+        <button (click)="handleOpenModalTable(user)" class="table-btn-actions">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="handleDeleteUser(user)" class="table-btn-actions">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="table-pagination"></div>
+
+<app-modal
+  *ngIf="isModalTableOpen"
+  (closeModal)="handleCloseModalTable()"
+  [user]="currentUser"
+  [isViewOnly]="isModalViewOnly"
+  (saveChanges)="handleSaveChanges($event)"
+></app-modal>

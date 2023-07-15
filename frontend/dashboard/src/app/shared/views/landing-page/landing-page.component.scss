@@ -1,0 +1,126 @@
+.landing-page-container {
+  height: 100%;
+  background-color: white;
+  color: black;
+  display: flex;
+
+  h1,
+  h2,
+  h4 {
+    height: 10%;
+    width: 75%;
+    text-align: center;
+  }
+
+  .slogan-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+
+    .slogan-title-strong {
+      color: #41cc8e;
+    }
+
+    .slogan-image {
+      width: 55%;
+      height: auto;
+    }
+  }
+
+  .login-container, .create-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 45%;
+    background-color: #34495e;
+
+    .login-title, .create-account-title {
+      padding-top: 10px;
+    }
+
+    .login-form-container,.create-account-form-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 75%;
+      height: 80%;
+      background-color: white;
+      border-radius: 5px;
+
+      .login-input, .create-account-input {
+        padding: 5px;
+        width: 90%;
+        height: 8%;
+        border: 1px solid #34495E;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        &:focus {
+         outline: none !important;
+         border: 1px solid #41cc8e;
+         box-shadow: 0 0 5px rgba(65, 204, 142, 0.5);
+
+        }
+      }
+
+      .login-btn, .create-account-btn {
+        width: 45%;
+        height: 8%;
+        background-color: #34495e;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover{
+          background-color: white;
+          border:  2px solid #34495e;
+          color: #34495e;
+          transform: translateY(-3px);
+          transition: 0.4s;
+          opacity: 0.8;
+        }
+      }
+      .login-span, .create-account-span {
+        position: relative;
+        width: 90%;
+        height: auto;
+
+        .login-btn-forgot-password,
+        .login-btn-create-account {
+          position: relative;
+          height: auto;
+          width: auto;
+          color: #41cc8e;
+          background-color: transparent;
+          border-style: none;
+          &:hover{
+            transition: 0.4s;
+            opacity: 0.8;
+            cursor: pointer;
+          }
+          ::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            border-bottom: 1px solid #41cc8e;
+          }
+        }
+      }
+      .span-create-account {
+        position: relative;
+        bottom: 2%;
+      }
+      .span-password {
+        position: relative;
+        bottom: -2%;
+      }
+    }
+  }
+}

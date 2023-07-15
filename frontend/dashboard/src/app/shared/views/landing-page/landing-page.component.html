@@ -1,0 +1,40 @@
+<div class="landing-page-container">
+  <div class="slogan-container">
+    <h1>Welcome to <strong class="slogan-title-strong">InfluencerHub</strong>!</h1>
+    <h4>Make Influence Made Simple: Effortlessly Manage Influencer Data</h4>
+    <img class="slogan-image" src="assets/app-home.svg" alt="app-home-image">
+  </div>
+
+  <ng-container *ngIf="hasUserAccount; else createAccountSection">
+    <div class="login-container">
+      <div class="login-form-container">
+        <h2 class="login-title">Login</h2>
+        <input class="login-input" [(ngModel)]="userEmail" type="text" placeholder="Email">
+        <input class="login-input" [(ngModel)]="userPassword"type="password" placeholder="Password">
+        <button class="login-btn" (click)="handleLogin()"><strong>Sign in</strong></button>
+        <span class="login-span span-password">Forgot the password? click
+          <button (click)="handleChangePassword()" class="login-btn-forgot-password"><strong>here</strong></button>
+        </span>
+        <span class="login-span span-create-account">Don't have an account? click
+          <button (click)="handleCreateNewAccount()" class="login-btn-create-account"><strong>Sign up</strong></button>
+        </span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #createAccountSection>
+    <div class="create-account-container">
+      <div class="create-account-form-container">
+        <h2 class="create-account-title">Sign up</h2>
+        <input class="create-account-input" [(ngModel)]="newUserEmail" type="text" placeholder="Email">
+        <input class="create-account-input"  [(ngModel)]="newUserPassword" type="password" placeholder="Password">
+        <input class="create-account-input"  [(ngModel)]="newUserRepeatPassword" type="password" placeholder="Repeat password">
+        <button (click)="createAccount()" class="create-account-btn"><strong>Create account</strong></button>
+        <span class="create-account-span span-password">Already have an account? click
+          <button (click)="handleLoginPage()" class="login-btn-forgot-password"><strong>here</strong></button>
+        </span>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

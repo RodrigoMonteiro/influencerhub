@@ -1,0 +1,14 @@
+<div class="home-container">
+  <app-header></app-header>
+  <app-search-options
+    (emitModalStatus)="handleChangeModalOpen()"
+  ></app-search-options>
+  <app-modal
+    (closeModal)="handleChangeModalClose()"
+    *ngIf="isModalOpen"
+    [user]="newUser"
+    (saveChanges)="handleSaveChanges($event)"
+
+  ></app-modal>
+  <app-table></app-table>
+</div>
