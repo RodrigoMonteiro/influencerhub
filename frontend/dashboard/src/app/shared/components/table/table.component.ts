@@ -78,20 +78,23 @@ export class TableComponent implements OnInit {
     });
     this.usersTest = this.usersTest.filter(
       (user) => user.id !== userDeleted.id
-    );  //Here work fine...
+    ); //Here work fine...
   }
 
   searchAttributeByText() {
     const searchValue = this.searchField.toLowerCase();
-    this.usersTest = this.usersTest.filter(
-      (user) =>
-        user[
-          String(this.firstAttribute.toLowerCase() as keyof User)
-        ].toLowerCase() === searchValue ||
-        user[
-          String(this.secondAttribute.toLowerCase() as keyof User)
-        ].toLowerCase() === searchValue
-    );
+
+    this.usersTest = this.usersTest.filter((user) => {
+      const firstAttr = String(this.firstAttribute).toLowerCase() as keyof User;
+      const secondAttr = String(
+        this.secondAttribute
+      ).toLowerCase() as keyof User;
+
+      return (
+        String(user[firstAttr]).toLowerCase() === searchValue ||
+        String(user[secondAttr]).toLowerCase() === searchValue
+      );
+    });
   }
 
   handleSaveChanges(user: User) {
