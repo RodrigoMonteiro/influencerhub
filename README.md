@@ -77,17 +77,67 @@ VALUES ('user3@example.com', 'user231');
 
 ## Usage
 
-1. Upon opening the application (__http://localhost:4200__), you will be presented with the landing page. Here, you can create a new account or use one of the existing accounts created during the backend setup.
+This web application was designed to manage influencer data using an Angular framework, coupled with node.js and SQL. It features a versatile search interface allowing users to filter influencers based on one or two attributes or through a dynamic input field.
 
-2. The application offers two significant features:
+## Application images
 
-* (__Create a new user__): You can create a new user by selecting the desired attributes and clicking the (__"Save"__) button in the modal.
+### Important: All data retrieved in the application was added using the SQL code mentioned before.
 
-* (__Filter by attribute__): Use the two select fields to filter users based on specific attributes. After selecting the desired attributes, click the "Search" button to retrieve the filtered results.
+<span>The landing page is where the user can log in (if they already have an account) or create a new one. In the case that the user has an account, they need to fill in the email and password fields.</span>
 
-3. (__The table dynamically adjusts its columns based on the selected attributes__). Each row in the table provides options to view (without editing), edit (modify values of a user), and delete (remove a user). Clicking the view or edit option opens a modal with detailed information about the selected user.
+<img src="frontend/dashboard/src/assets/readme/landing-page.png">
 
-4. Optionally, you can use the switch button to toggle between dark and light themes for the application.
+<span>If the user does not have an account, they need to click on the 'Sign up' button to be redirected to the form for creating a new account. The image below shows the create account form. Once the user fills in the fields and clicks on the 'Create account' button, they will be redirected back to the login page again.</span>
 
-Feel free to explore and manage influencer information using InfluencerHub!
+<img src="frontend/dashboard/src/assets/readme/create-account.png">
+
+<span>Once the user logs in, they will be redirected to the home page. The home page consists of a header (containing the application name, a switch theme button, and a logout button), a search options bar (with a 'Create a new influencer' button, two select fields containing all user's attributes, and a search button), and a table of influencers.</span>
+
+<img src="frontend/dashboard/src/assets/readme/home-page.png">
+
+<span>This is how the application will be displayed when the user uses the button to change the theme, in this case, the dark theme. </span>
+
+<img src="frontend/dashboard/src/assets/readme/dark-mode.png">
+
+<span>Observation: All other images in this readme will use the light theme.</span>
+
+<span>If the user desires to create a new influencer, it is necessary to click on the 'Create New User' button, which will pop up a form to be filled with information about the new influencer.</span>
+
+<img src="frontend/dashboard/src/assets/readme/create-influencer.png">
+
+<span>Once a new user is created, it will be visible in the influencer's table.</span>
+
+<img src="frontend/dashboard/src/assets/readme/create-new-influencer-table.png">
+
+<span>As mentioned previously, there are two select fields that contain all influencer's attributes. These selects have the function of creating a dynamic search among influencers, returning only the selected attribute in the search moment to the table. In example below 
+ are selected attributes "Name" and "Platform".</span>
+
+<img src="frontend/dashboard/src/assets/readme/select-attribute1.png">
+
+<span>Here's another search with "Email" and "Subscribers" selected.</span>
+
+<img src="frontend/dashboard/src/assets/readme/select-attribute2.png">
+
+<span>The user may search for an influencer by input field, but there is a point, the search will be executed based on attributes selected on the select fields. if the user fills the input with the text "test" and the attributes "Name" and "Email" are selected, the table will filter and return influencers that have name or email like "test".</span>
+
+<img src="frontend/dashboard/src/assets/readme/input-search.png">
+
+<span>There are some actions that the user may do on the table (table's row that represents one specific influencer), such as seeing all information about this influencer, editing this influencer, and deleting this influencer.</span>
+
+<span>Here is some actions examples:</span>
+
+<ul>
+  <li>See influencer's data (Edit disabled) on "eye" icon: <img src="frontend/dashboard/src/assets/readme/read.png"></li>
+  <li>Edit an influencer on the form (Edit abled) on "pen" icon: <img src="frontend/dashboard/src/assets/readme/update1.png"></li>
+  <li>Edited influencer on the table: <img src="frontend/dashboard/src/assets/readme/update2.png"></li>
+  <li>Delete the influencer created on "trash" icon: <img src="frontend/dashboard/src/assets/readme/delete.png"></li>
+</ul>
+
+<span>The application is in development, so soon will come new features and improvements!</span>
+<span>Feel free to explore and manage influencer information using InfluencerHub!</span>
+
+
+
+
+
 
