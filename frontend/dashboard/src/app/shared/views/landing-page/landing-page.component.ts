@@ -3,6 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { UserStatusService } from '../../services/user/user-status/user-status.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Account } from '../../model/account';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnDestroy {
+  snackbarMessage: string = '';
+  snackbarIsVisible: boolean = false;
+
   hasUserAccount: boolean = true;
   isUserLogged: boolean = false;
 
@@ -39,37 +43,46 @@ export class LandingPageComponent implements OnDestroy {
 
   handleCreateNewAccount() {
     this.userStatusService.setRemoveUserAccount();
+    this.handleResetAllFields()
+    this.handleCloseSnackbar()
   }
 
   createAccount() {
-    if (this.newUserPassword === this.newUserRepeatPassword) {
-      this.loginService.handleCreateNewAccount(
-        this.newUserEmail,
-        this.newUserPassword
-      );
-      this.userStatusService.setUserAccount();
+    if (
+      this.newUserEmail.length === 0 ||
+      this.newUserPassword.length === 0 ||
+      this.newUserPassword !== this.newUserRepeatPassword
+    ) {
+      this.handleOpenSnackbar();
+      return;
     }
-    this.newUserEmail = '';
-    this.newUserPassword = '';
-    this.newUserRepeatPassword = '';
+
+    this.loginService.handleCreateNewAccount(
+      this.newUserEmail,
+      this.newUserPassword
+    );
+    this.userStatusService.setUserAccount();
+    this.handleResetAllFields();
   }
 
   handleLogin() {
-    this.loginService.handleAuthenticateUser(this.userEmail).subscribe(
-      (account) => {
-        if (account[0].password === this.userPassword) {
+    this.loginService.handleAuthenticateUser(this.userEmail).subscribe({
+      next: (account: Account[]) => {
+        if (
+          account.length > 0 &&
+          account[0].password === this.userPassword
+        ) {
           this.userStatusService.setIsUserLogged();
           this.router.navigate(['/home']);
-          this.userEmail = '';
-          this.userPassword = '';
+          this.handleResetAllFields();
         } else {
-          console.log('Email or password incorrect.');
+          this.handleOpenSnackbar();
         }
       },
-      (error) => {
+      error: (error: any) => {
         console.error('Failed to authenticate user', error);
-      }
-    );
+      },
+    });
   }
 
   handleChangePassword() {
@@ -78,6 +91,23 @@ export class LandingPageComponent implements OnDestroy {
 
   handleLoginPage() {
     this.userStatusService.setUserAccount();
+    this.handleResetAllFields()
+    this.handleCloseSnackbar()
+  }
+
+  handleCloseSnackbar() {
+    this.snackbarIsVisible = false;
+  }
+  handleOpenSnackbar() {
+    this.snackbarIsVisible = true;
+  }
+
+  handleResetAllFields() {
+    this.userEmail = '';
+    this.userPassword = '';
+    this.newUserEmail = '';
+    this.newUserPassword = '';
+    this.newUserRepeatPassword = '';
   }
 
   ngOnDestroy() {

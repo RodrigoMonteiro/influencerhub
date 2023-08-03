@@ -10,6 +10,8 @@ import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe'
 import { ModalComponent } from './components/modal/modal.component';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+
 
 
 
@@ -25,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     CapitalizeFirstLetterPipe,
     ModalComponent,
     TableComponent,
+    SnackbarComponent,
   ],
   imports: [CommonModule, MaterialModule, FormsModule],
   exports: [

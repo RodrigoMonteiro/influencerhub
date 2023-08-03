@@ -11,6 +11,10 @@
         <h2 class="login-title">Login</h2>
         <input class="login-input" [(ngModel)]="userEmail" type="text" placeholder="Email">
         <input class="login-input" [(ngModel)]="userPassword"type="password" placeholder="Password">
+        <app-snackbar [ngClass]="snackbarIsVisible ? '': 'snackbarNotVisible'" (emitChangeSnackbarStatus) ="handleCloseSnackbar()"
+        [msg]=" hasUserAccount ? 'Email does not have an account, or the email/password is incorrect.'
+        :
+        'It is not possible create account. Try again.'"></app-snackbar>
         <button class="login-btn" (click)="handleLogin()"><strong>Sign in</strong></button>
         <span class="login-span span-password">Forgot the password? click
           <button (click)="handleChangePassword()" class="login-btn-forgot-password"><strong>here</strong></button>
@@ -29,6 +33,10 @@
         <input class="create-account-input" [(ngModel)]="newUserEmail" type="text" placeholder="Email">
         <input class="create-account-input"  [(ngModel)]="newUserPassword" type="password" placeholder="Password">
         <input class="create-account-input"  [(ngModel)]="newUserRepeatPassword" type="password" placeholder="Repeat password">
+        <app-snackbar [ngClass]="snackbarIsVisible ? '': 'snackbarNotVisible'" (emitChangeSnackbarStatus) ="handleCloseSnackbar()"
+        [msg]=" hasUserAccount ? 'Email does not have an account, or the email/password is incorrect.'
+        :
+        'It is not possible create account. Try again.'"></app-snackbar>
         <button (click)="createAccount()" class="create-account-btn"><strong>Create account</strong></button>
         <span class="create-account-span span-password">Already have an account? click
           <button (click)="handleLoginPage()" class="login-btn-forgot-password"><strong>here</strong></button>

@@ -36,6 +36,14 @@
     height: 100%;
     width: 45%;
     background-color: #34495e;
+     app-snackbar{
+      width: 90%;
+      height: 10%;
+     }
+
+     .snackbarNotVisible{
+      visibility: hidden;
+     }
 
     .login-title, .create-account-title {
       padding-top: 10px;
